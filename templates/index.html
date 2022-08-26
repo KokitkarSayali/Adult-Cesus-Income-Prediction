@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Adult Census Income Prediction</title>
+    <style>
+        #grid1{
+            height: 200px;
+            background-image: linear-gradient(red,blue);
+        }
+    </style>
+</head>
+<body  style="background-image: linear-gradient(to right,PaleTurquoise,Thistle)" >
+    <div class="form">
+        
+        <h1 style="text-align:center ; color: navy;" >Census Income Prediction</h1>
+
+         <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict')}}"method="post">
+                <p style="text-align:center"><label  for="age">Age :</label>
+                    <input  type="text" name="age" placeholder="Age" required="required" pattern="\d*" title="Numbers only, please." /></p><br>
+
+                <p  style="text-align:center"><label for="marital-status">Marital Status :</label>
+                    <select  class="form-select" name="marital-status"aria-label="Default Select example" pattern="\d*" required="required">
+                        <option value="0">Never-married</option>
+                        <option value="1">Married</option>
+                        <option value="2">Divorced</option>
+                        <option value="3">Separated</option>
+                        <option value="4">Widowed</option>
+                        <option value="5">Married-spouse-absent</option>
+                        <option value="6">Married-AF-spouse</option>
+                    </select></p><br>
+
+                <p style="text-align:center"><label for="relationship" aria-setsize="10px">Relationship:</label>
+                    <select class="form-control" id="relationship" name="relationship" pattern="\d*" aria-label="Default Select example">
+                        <option value="0">Not-in-family</option>
+                        <option value="1">Husband</option>
+                        <option value="2">Wife</option>
+                        <option value="3">Own-child</option>
+                        <option value="4">Unmarried</option>
+                        <option value="5">Other-relative</option>
+                    </select><br></p><br>
+
+
+                <p style="text-align:center"><label for="education-num">Number of Educational years:</label>
+                    <input type="number" step="1" class="form-control" id="education-num" name="education-num" required></p><br>
+                
+                <p style="text-align:center"><label for="occupation">Occupation:</label>
+                    <select class="form-control" id="occupation" name="occupation">
+                        <option value="0">Prof-specialty</option>
+                        <option value="1">Craft-repair</option>
+                        <option value="2">Exec-managerial</option>
+                        <option value="3">Adm-clerical</option>
+                        <option value="4">Sales</option>
+                        <option value="5">Machine-op-inspct</option>
+                        <option value="6">Transport-moving</option>
+                        <option value="7">Handlers-cleaners</option>
+                        <option value="8">Farming-fishing</option>
+                        <option value="9">Tech-support</option>
+                        <option value="10">Protective-serv</option>
+                        <option value="11">Priv-house-serv</option>
+                        <option value="12">Armed-Forces</option>
+                        <option value="13">Other-service</option>
+                    </select></p><br>
+
+                
+                <p style="text-align:center" ><label for="capital-gain" >Capital Gain:</label>
+                    <input type="number" step="1" name="capital-gain" placeholder="1=Gain, 0=No Gain" required="required" min=0 max=1 value="0"/><br>
+                    (Enter 1 if you earn any profit otherwise enter 0) </p><br>
+                    
+                <p style="text-align:center"> <label for="hours-per-week">Hours of work per week:</label>
+                    <input type="text" name="hours-per-week" placeholder="hours-per-week" required="required" pattern="\d*" title="Numbers only, please." /></p><br>
+                    
+                <p style="text-align:center;"><t><button type="submit" style="height: 25px; width: 200px; color: navy; font-weight: 1000;" class="btn btn-primary btn-block btn-large">Predict</button>
+        </form>
+   <h2 style="text-align:center ; color: navy;">{{ prediction_text }}</h2>
+    </div>
+</body>
+</html>
